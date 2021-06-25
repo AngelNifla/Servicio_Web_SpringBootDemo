@@ -3,6 +3,7 @@ package com.makotojava.learn.springboot.web;
 import java.util.List;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import com.makotojava.learn.odot.exception.ServiceException;
 import com.makotojava.learn.odot.model.Item;
 import com.makotojava.learn.springboot.SpringBootDemoController;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/ItemRestService")
 public class ItemRestService extends SpringBootDemoController {
@@ -32,7 +34,7 @@ public class ItemRestService extends SpringBootDemoController {
     return getItemService().findByDescription(description);
   }
 
-  @RequestMapping(value = "/Add", method = RequestMethod.PUT)
+  @RequestMapping(value = "/Add", method = RequestMethod.POST)
   public Item add(@RequestBody Item item) {
     Item ret;
     try {
